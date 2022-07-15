@@ -1,31 +1,11 @@
 from tkinter import *
 
-from setuptools import Command
 
-# método chamado pela funçao lambda durante a criaçao do btn
-def cmd_click(mensagem):
-    print(mensagem)
+window = Tk() 
+window.title('GFAI')                      
+window.geometry("500x250+200+200")
 
-# Janela
-window = Tk() # objeto window
-window.title('GFAI') # chamando o método title
-                        # 200 e 200 posiçao inicial da tela 200 pixes para x e 200 pixes para y
-window.geometry("500x250+200+200")  #tamanho inicial da tela(largura, altura)
-window.resizable(True,True) # a janela não pode ser aumentada com False para x e y
-#window.minsize(width=500,height=250)
-#window.maxsize(1000,900)
-#window.state("zoomed") # tela maximizada
-window.iconbitmap('img/icon_gremio.ico')
-
-
-# botao   btn é uma instancia de Button      #cmd_click é um método
-btn = Button(window, text="Pesquisar",command=lambda:cmd_click("Nova mensagem")) # botao pertence a janela window
-btn.pack() # aparecer o botao
-
-btn1 = Button(window, text="Inserir",command= lambda: print('inserir')) # botao pertence a janela window
-btn1.pack() # aparecer o botao
-
-
+# Label
 # Label
 border = 4
 label_1 = Label(window, text="solid",
@@ -33,7 +13,13 @@ label_1 = Label(window, text="solid",
                 font="Ariel 10",
                 borderwidth= border,
                 relief="solid",
-                width=20) # largura do background
+                width=20, # largura do background onde aparecerá o label
+                height = 2, # significa o número de text que se pode colocar dentro do width(alinhados pela coluna)
+                anchor=CENTER,  # alinhamento do texto dentro do width
+                padx=10,
+                pady=5,
+                justify=RIGHT) # alinhamento do texto considerando o proprio texto
+
 label_1.pack() # aparecer o label
 #label_2 = Label(window, text="Este é o label 2.")
 #label_2.pack() # aparecer o label
@@ -69,6 +55,23 @@ label_6 = Label(window, text="ridge",
                 width=20)
 label_6.pack()
 
+label_7 = Label(window,text='text label 7')
 
+label_7['font'] = "Arial 20"
+label_7['bd'] = 1
+label_7['relief'] = 'solid'
+label_7.pack()
 
+label_7['text'] = 'Novo texto do label 7'
+
+texto = StringVar()
+texto.set('André Porto')
+label_8 = Label(window,
+                font="Arial 20",
+                bg='red',
+                fg='white',
+                textvariable=texto)
+
+label_8.pack()
+texto.set('André Luzardo Porto')
 window.mainloop()
